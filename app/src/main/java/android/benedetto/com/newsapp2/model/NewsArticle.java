@@ -6,9 +6,15 @@ public class NewsArticle {
     private String mContent;
 
 
-    private NewsArticle(String title, String content) {
+
+    public NewsArticle(String title, String content) {
         mTitle = title;
         mContent = content;
+    }
+
+    public NewsArticle(String title) {
+        mTitle = title;
+        mContent = null;
     }
 
     public String getTitle() {
