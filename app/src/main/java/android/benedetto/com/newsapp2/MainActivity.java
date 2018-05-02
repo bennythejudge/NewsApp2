@@ -29,13 +29,33 @@ public class MainActivity extends AppCompatActivity {
         // create a list of NewsArticle
         List<NewsArticle> newsArticles = new ArrayList<>();
         newsArticles.add(new NewsArticle(
-                "How mobile tech is improving healthcare for some of the world’s most remote communities"
+                "How mobile tech is improving healthcare for some of the world’s most remote communities",
+                "How mobile tech is improving healthcare for some of the world’s most remote communities How mobile tech is improving healthcare for some of the world’s most remote communities How mobile tech is improving healthcare for some of the world’s most remote communities"
         ));
         newsArticles.add(new NewsArticle(
-                "Wildlife on your doorstep: share your May photos"
+                "Wildlife on your doorstep: share your May photos",
+                "Wildlife on your doorstep: share your May photos Wildlife on your doorstep: share your May photos Wildlife on your doorstep: share your May photos "
+
         ));
         newsArticles.add(new NewsArticle(
-                "Our Digital Fellows share their experiences of the scheme"
+                "Our Digital Fellows share their experiences of the scheme",
+                "Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme"
+        ));
+        newsArticles.add(new NewsArticle(
+                "Our Digital Fellows share their experiences of the scheme",
+                "Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme"
+        ));
+        newsArticles.add(new NewsArticle(
+                "Our Digital Fellows share their experiences of the scheme",
+                "Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme"
+        ));
+        newsArticles.add(new NewsArticle(
+                "Our Digital Fellows share their experiences of the scheme",
+                "Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme"
+        ));
+        newsArticles.add(new NewsArticle(
+                "Our Digital Fellows share their experiences of the scheme",
+                "Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme"
         ));
 
         // then we display them in the recycler view

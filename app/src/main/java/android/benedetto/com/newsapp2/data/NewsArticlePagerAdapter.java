@@ -26,10 +26,12 @@ public class NewsArticlePagerAdapter extends
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView itemTitleTV;
+        TextView itemBodyTV;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             itemTitleTV = (TextView) itemView.findViewById(R.id.item_title);
+            itemBodyTV = (TextView) itemView.findViewById(R.id.item_body);
         }
     }
 
@@ -51,6 +53,7 @@ public class NewsArticlePagerAdapter extends
         Log.v("onBindViewHolder", "position: " + position);
         NewsArticle na = news.get(position);
         holder.itemTitleTV.setText(na.getTitle());
+        holder.itemBodyTV.setText(na.getContent());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
