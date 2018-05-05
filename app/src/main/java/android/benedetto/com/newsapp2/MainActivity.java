@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // first we need to fetch the news from the API
-        newsData = new ArrayList<>();
-
         // initially I use a static array
         // create a list of NewsArticle
         List<NewsArticle> newsArticles = new ArrayList<>();
