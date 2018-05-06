@@ -19,7 +19,9 @@ public class NewsArticleData {
         ArrayList<NewsArticle> news = new ArrayList<>();
 
         public void getNews(final NewsArticleListAsyncResponse callBack) {
-            String url = "aaaa";
+            String url = "https://content.guardianapis.com/search?q=infance&api-key=33a2e54f-afd9-4dca-bc32-6ec3de85deca&order-by=newest";
+
+            Log.d("getNews", "inside here");
 
             // singleton only use one instance
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
@@ -53,6 +55,11 @@ public class NewsArticleData {
 
                 }
             });
+
+
+            Log.d("getNews", "about to call AppController.getInstance().addToRequestQueue(jsonArrayRequest);");
+            Log.d("getNews", "jsonArrayRequest: " + jsonArrayRequest.toString());
+
 
             AppController.getInstance().addToRequestQueue(jsonArrayRequest);
         }
