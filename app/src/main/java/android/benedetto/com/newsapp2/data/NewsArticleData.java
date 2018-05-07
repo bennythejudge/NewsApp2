@@ -9,6 +9,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 public class NewsArticleData {
         ArrayList<NewsArticle> news = new ArrayList<>();
+        StringRequest sr;
 
 
     public void getNews(final NewsArticleListAsyncResponse callBack) {
@@ -30,55 +32,31 @@ public class NewsArticleData {
         //     implementation 'com.android.volley:volley:1.1.0'
         // instead of
         //     implementation 'com.dubsmash.volley:library:2.0.1'
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+        sr = new StringRequest(
                 Request.Method.GET,
                 url,
-                null,
-                new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-
-                Log.d("onResponse", "response: " + response.toString());
-
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        JSONObject quoteObj = response.getJSONObject(i);
-
-//                            Quote quote = new Quote();
-//                            quote.setQuote(quoteObj.getString("quote"));
-//                            quote.setAuthor(quoteObj.getString("name"));
-
-                        Log.d("getQuote", quoteObj.getString("name"));
-
-//                            quoteArrayList.add(quote);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("onResponse", "inside the stringrequest onresponse");
+                        Log.d("onResponse", "response: " + response.toString());
                     }
-                }
-
-                // only when the HTTP call is done, we call the callback method
-                if (null != callBack) callBack.processFinished(news);
-
-            }
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.d("onErrorResponse", "error: " + error.getMessage());
             }
         });
-
-
-        Log.d("getNews", "about to call AppController.getInstance().addToRequestQueue(jsonArrayRequest);");
-        Log.d("getNews", "jsonArrayRequest: " + jsonArrayRequest.toString());
-        Log.d("getNews", "after print of jsonArrayRequest");
+        Log.d("getNews", "about to call AppController.getInstance().addToRequestQueue(stringRequest);");
+        Log.d("getNews", "stringRequest: " + sr.toString());
+                Log.d("getNews", "after print of stringRequest");
 
 
         // for the second time you have spent a lot of time chasing the
         // null value exception at this point both times caused by
         // getInstance() because the entry for AppController was missing from the
         // manifest file
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+        AppController.getInstance().addToRequestQueue(sr);
     }
 }
 
