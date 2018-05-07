@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
 
 public class AppController extends Application {
@@ -13,7 +14,9 @@ public class AppController extends Application {
         private static AppController mInstance;
         private RequestQueue mRequestQueue;
 
-        public static synchronized AppController getInstance() {
+
+    public static synchronized AppController getInstance() {
+            Log.d("getInstance", "before the log.d");
             Log.d("getInstance", "mInstance: " + mInstance.toString());
             return mInstance;
         }
@@ -26,10 +29,17 @@ public class AppController extends Application {
         }
 
         public RequestQueue getRequestQueue() {
-            Log.d("getRequestQueue", "inside here - single argument version");
+            Log.d("getRequestQueue", "inside here");
+
 
             if (mRequestQueue == null) {
                 mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+                Log.d("getRequestQueue",
+                        "mRequestQueue: " + mRequestQueue.toString());
+
+            } else {
+                Log.d("getRequestQueue", "going for else with mRequestQueue: " +
+                        mRequestQueue.toString());
             }
 
             return mRequestQueue;
@@ -38,6 +48,8 @@ public class AppController extends Application {
         public <T> void addToRequestQueue(Request<T> req, String tag) {
 
             Log.d("addToRequestQueue", "inside here - 2 argument version");
+            Log.d("addToRequestQueue", "req: " + req.toString());
+            Log.d("addToRequestQueue", "tag: " + tag.toString());
 
 
             req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
@@ -48,6 +60,7 @@ public class AppController extends Application {
         public <T> void addToRequestQueue(Request<T> req) {
 
             Log.d("addToRequestQueue", "inside here - single argument version");
+            Log.d("addToRequestQueue", "req: " + req.toString());
 
             req.setTag(TAG);
             getRequestQueue().add(req);
