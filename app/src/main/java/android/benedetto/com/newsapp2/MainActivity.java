@@ -1,9 +1,11 @@
 package android.benedetto.com.newsapp2;
 
+import android.app.LoaderManager;
 import android.benedetto.com.newsapp2.data.NewsArticleData;
 import android.benedetto.com.newsapp2.data.NewsArticleListAsyncResponse;
 import android.benedetto.com.newsapp2.data.NewsArticlePagerAdapter;
 import android.benedetto.com.newsapp2.model.NewsArticle;
+import android.content.Loader;
 import android.support.v4.view.NestedScrollingChild;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +17,14 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity
+        extends AppCompatActivity
+        implements LoaderManager.LoaderCallbacks<List<NewsArticle>> {
+
+    private static final String LOG_TAG = MainActivity.class.getName();
+    private static final int NEWSARTICLE_LOADER_ID = 1;
+
+
     private NewsArticlePagerAdapter npa;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -83,20 +92,18 @@ public class MainActivity extends AppCompatActivity {
         // good luck with all of the above! (self-derogatory sarcasm)
     }
 
-    private List<NewsArticle> getArticles() {
-        // fetch API data - I wish I knew how to do this and not just guess
-        final List<NewsArticle> newsArticles = new ArrayList<>();
-        Log.d("getArticles", "inside metho");
+    @Override
+    public Loader<List<NewsArticle>> onCreateLoader(int id, Bundle args) {
+        return null;
+    }
 
-        new NewsArticleData().getNews(new NewsArticleListAsyncResponse() {
-            @Override
-            public void processFinished(ArrayList<NewsArticle> news) {
-                for (int i = 0; i < news.size(); i++) {
-                    Log.d("processFinished", "inside loop " + i);
-                }
-                // here we should notifyDataSetChanged but what of?
-            }
-        });
-        return newsArticles;
+    @Override
+    public void onLoadFinished(Loader<List<NewsArticle>> loader, List<NewsArticle> data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<NewsArticle>> loader) {
+
     }
 }
