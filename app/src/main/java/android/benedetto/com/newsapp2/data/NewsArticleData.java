@@ -9,6 +9,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,55 +31,49 @@ public class NewsArticleData {
         //     implementation 'com.android.volley:volley:1.1.0'
         // instead of
         //     implementation 'com.dubsmash.volley:library:2.0.1'
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+        JsonObjectRequest jsor = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
                 null,
-                new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        NewsArticle na = new NewsArticle();
 
-                Log.d("onResponse", "response: " + response.toString());
+                        na.setContent("test");
+                        na.setTitle("title");
 
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        JSONObject quoteObj = response.getJSONObject(i);
+                        news.add(na);
 
-//                            Quote quote = new Quote();
-//                            quote.setQuote(quoteObj.getString("quote"));
-//                            quote.setAuthor(quoteObj.getString("name"));
 
-                        Log.d("getQuote", quoteObj.getString("name"));
+                        Log.d("onResponse", "response: " + response);
 
-//                            quoteArrayList.add(quote);
+                        // only when the HTTP call is done, we call the callback method
+                        if (null != callBack) callBack.processFinished(news);
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
-                }
 
-                // only when the HTTP call is done, we call the callback method
-                if (null != callBack) callBack.processFinished(news);
 
-            }
-        }, new Response.ErrorListener() {
+
+
+
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("onErrorResponse", "Error: " + error.getMessage());
 
             }
         });
 
 
         Log.d("getNews", "about to call AppController.getInstance().addToRequestQueue(jsonArrayRequest);");
-        Log.d("getNews", "jsonArrayRequest: " + jsonArrayRequest.toString());
-        Log.d("getNews", "after print of jsonArrayRequest");
 
 
         // for the second time you have spent a lot of time chasing the
         // null value exception at this point both times caused by
         // getInstance() because the entry for AppController was missing from the
         // manifest file
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+        AppController.getInstance().addToRequestQueue(jsor);
     }
 }
 

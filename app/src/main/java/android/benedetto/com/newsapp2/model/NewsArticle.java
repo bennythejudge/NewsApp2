@@ -5,8 +5,6 @@ public class NewsArticle {
     private String mTitle;
     private String mContent;
 
-
-
     public NewsArticle(String title, String content) {
         mTitle = title;
         mContent = content;
@@ -15,6 +13,9 @@ public class NewsArticle {
     public NewsArticle(String title) {
         mTitle = title;
         mContent = null;
+    }
+
+    public NewsArticle() {
     }
 
     public String getTitle() {

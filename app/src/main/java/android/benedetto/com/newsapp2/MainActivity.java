@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         new NewsArticleData().getNews(new NewsArticleListAsyncResponse() {
             @Override
             public void processFinished(ArrayList<NewsArticle> news) {
+                Log.d("processFinished", "news: " + news.get(0).getTitle());
+                Log.d("processFinished", "news size: " + news.size());
                 for (int i = 0; i < news.size(); i++) {
                     Log.d("processFinished", "inside loop " + i);
                 }
