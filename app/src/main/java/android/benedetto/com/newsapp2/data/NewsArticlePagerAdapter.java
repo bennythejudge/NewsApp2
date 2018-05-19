@@ -40,7 +40,9 @@ public class NewsArticlePagerAdapter extends
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = (View) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.news_item, parent, false);
+                .inflate(R.layout.item_view, parent, false);
+//        View v = (View) LayoutInflater.from(parent.getContext())
+//                .inflate(R.layout.news_item, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }

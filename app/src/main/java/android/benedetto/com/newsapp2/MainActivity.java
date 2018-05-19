@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 "Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme"
         ));
         newsArticles.add(new NewsArticle(
-                "Our Digital Fellows share their experiences of the scheme",
-                "Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme Our Digital Fellows share their experiences of the scheme"
+                "Some news from somewhere",
+                "Modulo di recesso per acquisti sullo Shop di www.wind.it ai sensi dell’art.49, comma 1, lett. h) – del dlgs 21/14 (compilare e restituire il presente modulo per recedere dal contratto)"
         ));
 
         // then we display them in the recycler view
